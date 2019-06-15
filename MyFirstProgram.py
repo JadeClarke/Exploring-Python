@@ -24,16 +24,23 @@ elif response.lower() == "y":
   while count<4:
     print("\nGuess Number " + str(count))
     guess=input("What's your guess? ")
-    if int(guess)==number:
-      print("Well done! You guessed my number!")
-      break
-    else:
-      count+=1
-      if count<4:
-        print("Bad luck! You've got " + str(4-count) + " guesses left.")
+    
+    try:
+      if int(guess)==number:
+        print("Well done! You guessed my number!")
+        break
       else:
-        print("Bad luck! You've run out of guesses!")
-        print("My number was " + str(number))
+        count+=1
+        if count<4:
+          print("Bad luck! You've got " + str(4-count) + " guesses left.")
+        else:
+          print("Bad luck! You've run out of guesses!")
+          print("My number was " + str(number))
+          
+    except ValueError:
+      count+=1
+      print("That wasn't a valid number.")
+      
   input("\nPress Enter to exit the game.")
    
         
